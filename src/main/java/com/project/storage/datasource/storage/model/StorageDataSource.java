@@ -25,8 +25,6 @@ public class StorageDataSource {
     @JoinColumn(name = "id_product", referencedColumnName = "id")
     private ProductsDataSource product;
 
-    private String photo; // salver dentro do resource
-
     private Integer quantity;
 
     private  String description;

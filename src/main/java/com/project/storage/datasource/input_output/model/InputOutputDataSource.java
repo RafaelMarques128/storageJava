@@ -21,6 +21,8 @@ public class InputOutputDataSource {
 
     private Integer idOrder;
 
+    private Boolean input;
+
     @ManyToOne
     @JoinColumn(name = "id_storage", referencedColumnName = "id")
     private StorageDataSource storage;
