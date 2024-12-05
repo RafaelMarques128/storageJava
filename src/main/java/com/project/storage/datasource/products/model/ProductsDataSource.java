@@ -1,10 +1,10 @@
 package com.project.storage.datasource.products.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.project.storage.datasource.storage.model.StorageDataSource;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -16,19 +16,17 @@ import lombok.*;
 public class ProductsDataSource {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String brand;
 
     private String model;
 
-    private String year;
+    private String yearModel;
 
     private String color;
 
     private Integer fipe;
-
-
 
 }

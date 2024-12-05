@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class StorageDataSource {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String ein;
@@ -27,7 +27,7 @@ public class StorageDataSource {
 
     private Integer quantity;
 
-    private  String description;
+    private String description;
 
     private Integer min;
 

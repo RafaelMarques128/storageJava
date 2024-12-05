@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class InputOutputDataSource {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private Integer idOrder;

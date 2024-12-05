@@ -1,6 +1,5 @@
 package com.project.storage.datasource.products;
 
-import com.project.storage.datasource.input_output.model.InputOutputDataSource;
 import com.project.storage.datasource.products.model.ProductsDataSource;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,7 +15,7 @@ public interface ProductsRepository extends JpaRepository<ProductsDataSource, In
 
     Optional<ProductsDataSource> findByModel(String model);
 
-    @Query("select u from ProductsDataSource u where u.year between :yearMin and :yearMax")
+    @Query("select u from ProductsDataSource u where u.yearModel between :yearMin and :yearMax")
     Optional<ProductsDataSource> findByYear(
             @Param("yearMin") String yearMin,
             @Param("yearMax") String yearMax);

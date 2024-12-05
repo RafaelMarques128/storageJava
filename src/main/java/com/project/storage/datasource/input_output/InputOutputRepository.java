@@ -24,5 +24,4 @@ public interface InputOutputRepository extends JpaRepository<InputOutputDataSour
     Optional<InputOutputDataSource> findByCreateAt(
             @Param("dateMin") LocalDateTime dateMin,
             @Param("dateMax") LocalDateTime dateMax);
-
 }

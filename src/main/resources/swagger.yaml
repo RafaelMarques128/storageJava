@@ -1,0 +1,413 @@
+openapi: 3.0.0
+info:
+  title: Storage MS
+  version: 1.0.0
+
+paths:
+  /input-output:
+
+    get:
+      summary: Get Inputs and Outputs
+      description: Lista todas as entradas/saídas.
+      operationId: getInputOutput
+      tags:
+        - InputOutput
+      parameters:
+        - in: body
+          name: InputOutput
+          required: true
+          schema:
+            $ref: '#/components/schemas/InputOutputDataSource'
+
+      responses:
+        '204':
+          description: no content
+        '400':
+          description: erro no request
+
+    post:
+      summary: Criar uma nova entrada ou saída
+      description: Adicionar entrada/saída
+      operationId: postInputOutput
+      tags:
+        - InputOutput
+      requestBody:
+        description: Dados para criar uma entrada/saída
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorageDataSource'
+      responses:
+        '201':
+          description: Entrada/saída criada com sucesso
+        '400':
+          description: erro no request
+
+  /input-output/{id}:
+
+    get:
+      summary: Obter uma entrada/saída pelo ID
+      description: Mostra a entrada/saída pelo ID.
+      operationId: getInputOutputById
+      tags:
+        - InputOutput
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da entrada/saída
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: no content
+        '400':
+          description: erro no request
+
+    put:
+      summary: Atualizar uma entrada/saída pelo ID
+      description: Mostra a entrada/saída pelo ID.
+      operationId: putInputOutputById
+      tags:
+        - InputOutput
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da entrada/saída
+          schema:
+            type: integer
+      requestBody:
+        description: Dados para atualizar uma entrada/saída
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InputOutputDataSource'
+      responses:
+        '200':
+          description: Entrada/saída atualizada com sucesso
+        '404':
+          description: Entrada/saída não encontrada
+
+    delete:
+      summary: Deletar uma entrada/saída pelo ID
+      description: Inativo
+      operationId: deleteInputOutputbyId
+      tags:
+        - InputOutput
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da entrada/saída
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Entrada/saída deletada com sucesso
+        '404':
+          description: Entrada/saída não encontrada
+
+  /products:
+
+    get:
+      summary: Listar todos os produtos
+      description: Lista todas os produtos.
+      operationId: getProducts
+      tags:
+        - Product
+      responses:
+        '200':
+          description: Lista de produtos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductsDataSource'
+
+    post:
+      summary: Criar um novo produto
+      tags:
+        - Product
+      requestBody:
+        description: Dados para criar um produto
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductsDataSource'
+      responses:
+        '201':
+          description: Produto criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductsDataSource'
+
+  /products/{id}:
+
+    get:
+      summary: Obter um produto pelo ID
+      tags:
+        - Product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do produto
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Produto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductsDataSource'
+        '404':
+          description: Produto não encontrado
+
+    put:
+      summary: Atualizar um produto pelo ID
+      tags:
+        - Product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do produto
+          schema:
+            type: integer
+      requestBody:
+        description: Dados para atualizar um produto
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductsDataSource'
+      responses:
+        '200':
+          description: Produto atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductsDataSource'
+        '404':
+          description: Produto não encontrado
+
+    delete:
+      summary: Deletar um produto pelo ID
+      tags:
+        - Product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do produto
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Produto deletado com sucesso
+        '404':
+          description: Produto não encontrado
+
+  /storage:
+
+    get:
+      summary: Listar todos os estoques
+      tags:
+        - Storage
+      responses:
+        '200':
+          description: Lista de estoques
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StorageDataSource'
+
+    post:
+      summary: Criar um novo estoque
+      tags:
+        - Storage
+      requestBody:
+        description: Dados para criar um estoque
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorageDataSource'
+      responses:
+        '201':
+          description: Estoque criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageDataSource'
+
+  /storage/{id}:
+
+    get:
+      summary: Obter um estoque pelo ID
+      tags:
+        - Storage
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do estoque
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Estoque encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageDataSource'
+        '404':
+          description: Estoque não encontrado
+
+    put:
+      summary: Atualizar um estoque pelo ID
+      tags:
+        - Storage
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do estoque
+          schema:
+            type: integer
+      requestBody:
+        description: Dados para atualizar um estoque
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorageDataSource'
+      responses:
+        '200':
+          description: Estoque atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageDataSource'
+        '404':
+          description: Estoque não encontrado
+
+    delete:
+      summary: Deletar um estoque pelo ID
+      tags:
+        - Storage
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do estoque
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Estoque deletado com sucesso
+        '404':
+          description: Estoque não encontrado
+
+components:
+  schemas:
+    InputOutputDataSource:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        idOrder:
+          type: integer
+          example: 101
+        input:
+          type: boolean
+          example: true
+        storage:
+          $ref: '#/components/schemas/StorageDataSource'
+        status:
+          type: string
+          example: ACTIVE
+        createAt:
+          type: string
+          format: date-time
+          example: "2024-11-29T10:00:00Z"
+
+    ProductsDataSource:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        brand:
+          type: string
+          example: "Samsung"
+        model:
+          type: string
+          example: "Galaxy S23"
+        year:
+          type: string
+          example: "2023"
+        color:
+          type: string
+          example: "Preto"
+        fipe:
+          type: integer
+          example: 3500
+
+    StorageDataSource:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        ein:
+          type: string
+          example: "ABC12345"
+        product:
+          $ref: '#/components/schemas/ProductsDataSource'
+        quantity:
+          type: integer
+          example: 100
+        description:
+          type: string
+          example: "Estoque central de smartphones"
+        min:
+          type: integer
+          example: 10
+        max:
+          type: integer
+          example: 500
+        enabled:
+          type: boolean
+          example: true
+        createAt:
+          type: string
+          format: date-time
+          example: "2024-11-01T12:00:00Z"
+        lastUpdateAt:
+          type: string
+          format: date-time
+          example: "2024-11-15T12:00:00Z"
+        closeAt:
+          type: string
+          format: date
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        detail:
+          type: string
+        status:
+          type: integer
