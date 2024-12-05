@@ -15,5 +15,4 @@ public enum StatusEnum {
         this.description = describe;
     }
 
-
 }
