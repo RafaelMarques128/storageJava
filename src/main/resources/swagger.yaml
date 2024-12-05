@@ -127,9 +127,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ProductsDataSource'
+        '400':
+          description: erro no request
 
     post:
       summary: Criar um novo produto
+      description: Adicionar um novo produto
+      operationId: postProduct
       tags:
         - Product
       requestBody:
@@ -151,6 +155,8 @@ paths:
 
     get:
       summary: Obter um produto pelo ID
+      description: Obter um produto pelo ID informado
+      operationId: getProductById
       tags:
         - Product
       parameters:
@@ -172,6 +178,8 @@ paths:
 
     put:
       summary: Atualizar um produto pelo ID
+      description: Atualiza um produto pelo ID informado
+      operationId: putProductById
       tags:
         - Product
       parameters:
@@ -191,15 +199,13 @@ paths:
       responses:
         '200':
           description: Produto atualizado com sucesso
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProductsDataSource'
         '404':
           description: Produto não encontrado
 
     delete:
       summary: Deletar um produto pelo ID
+      description: Deletar um produto pelo ID
+      operationId: deleteProductById
       tags:
         - Product
       parameters:
@@ -219,6 +225,8 @@ paths:
 
     get:
       summary: Listar todos os estoques
+      description: Listar todos os estoques cadastrados
+      operationId: getStorage
       tags:
         - Storage
       responses:
@@ -230,9 +238,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/StorageDataSource'
+        '400':
+          description: erro no request
 
     post:
       summary: Criar um novo estoque
+      description: Criar um novo estoque
+      operationId: postStorage
       tags:
         - Storage
       requestBody:
@@ -254,6 +266,8 @@ paths:
 
     get:
       summary: Obter um estoque pelo ID
+      description: Obtem um estoque pelo ID informado
+      operationId: getStorageById
       tags:
         - Storage
       parameters:
@@ -275,6 +289,8 @@ paths:
 
     put:
       summary: Atualizar um estoque pelo ID
+      description: Atualiza o estoque pelo ID informado
+      operationId: putStorageById
       tags:
         - Storage
       parameters:
@@ -294,15 +310,13 @@ paths:
       responses:
         '200':
           description: Estoque atualizado com sucesso
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StorageDataSource'
         '404':
           description: Estoque não encontrado
 
     delete:
       summary: Deletar um estoque pelo ID
+      description: Deletar um estoque pelo ID informado
+      operationId: deleteStorageById
       tags:
         - Storage
       parameters:
@@ -323,9 +337,6 @@ components:
     InputOutputDataSource:
       type: object
       properties:
-        id:
-          type: integer
-          example: 1
         idOrder:
           type: integer
           example: 101
@@ -345,9 +356,6 @@ components:
     ProductsDataSource:
       type: object
       properties:
-        id:
-          type: integer
-          example: 1
         brand:
           type: string
           example: "Samsung"
@@ -367,9 +375,6 @@ components:
     StorageDataSource:
       type: object
       properties:
-        id:
-          type: integer
-          example: 1
         ein:
           type: string
           example: "ABC12345"
