@@ -29,4 +29,12 @@ public class ProductsDataSource {
 
     private Integer fipe;
 
+    public ProductsDataSource(ProductsData data) {
+        this.brand = data.brand();
+        this.model = data.model();
+        this.yearModel = data.yearModel();
+        this.color = data.color();
+        this.fipe = data.fipe();
+    }
+
 }
