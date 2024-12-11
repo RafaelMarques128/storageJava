@@ -27,6 +27,8 @@ public class ProductsDataSource {
 
     private Integer fipe;
 
+    private Boolean ativo;
+
     public ProductsDataSource(ProductsRegister data) {
         this.brand = data.brand();
         this.model = data.model();
@@ -51,6 +53,10 @@ public class ProductsDataSource {
         if (productsRegister.fipe() != null){
             this.fipe = productsRegister.fipe();
         }
+    }
+
+    public void excluir(){
+        this.ativo = false;
     }
 
 }

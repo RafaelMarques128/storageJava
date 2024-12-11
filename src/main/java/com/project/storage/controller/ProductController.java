@@ -48,6 +48,12 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity
+    public ResponseEntity delete(@PathVariable Integer id){
+        ProductsDataSource product = productService.buscarPorId(id);
+
+        product.excluir();
+
+        return ResponseEntity.noContent().build();
+    }
 
 }
