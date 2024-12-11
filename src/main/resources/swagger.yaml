@@ -151,31 +151,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProductsDataSource'
 
-  /products/{id}:
-
-    get:
-      summary: Obter um produto pelo ID
-      description: Obter um produto pelo ID informado
-      operationId: getProductById
-      tags:
-        - Product
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: ID do produto
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Produto encontrado
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProductsDataSource'
-        '404':
-          description: Produto não encontrado
-
     put:
       summary: Atualizar um produto pelo ID
       description: Atualiza um produto pelo ID informado
@@ -199,6 +174,31 @@ paths:
       responses:
         '200':
           description: Produto atualizado com sucesso
+        '404':
+          description: Produto não encontrado
+
+  /products/{id}:
+
+    get:
+      summary: Obter um produto pelo ID
+      description: Obter um produto pelo ID informado
+      operationId: getProductById
+      tags:
+        - Product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do produto
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Produto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductsDataSource'
         '404':
           description: Produto não encontrado
 

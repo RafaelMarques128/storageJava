@@ -1,11 +1,10 @@
 package com.project.storage.service;
 
 import com.project.storage.datasource.products.ProductsRepository;
-import com.project.storage.datasource.products.model.ProductsData;
+import com.project.storage.datasource.products.records.ProductsRegister;
 import com.project.storage.datasource.products.model.ProductsDataSource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public class ProductService {
     @Autowired
     ProductsRepository productsRepository;
 
-    public void createProduct(ProductsData product) {
+    public void createProduct(ProductsRegister product) {
         productsRepository.save(ProductsDataSource.builder()
                 .brand(product.brand())
                 .model(product.model())
@@ -33,11 +32,11 @@ public class ProductService {
         return response;
     }
 
-    public Object buscarPorId(Integer id) {
-        return productsRepository.findById(id);
+    public ProductsDataSource buscarPorId(Integer id) {
+        return productsRepository.getReferenceById(id);
     }
 
-    public void updateProduct(ProductsData data) {
+    public void attProduct(Object product, ProductsRegister data) {
 
     }
 }

@@ -1,8 +1,6 @@
-package com.project.storage.datasource.products.model;
+package com.project.storage.datasource.products.records;
 
-import org.springframework.http.ResponseEntity;
-
-public record ProductsData(
+public record ProductsRegister(
         Integer id,
         String brand,
         String model,
