@@ -2,6 +2,7 @@ package com.project.storage.datasource.products.model;
 
 import com.project.storage.datasource.products.records.ProductsRegister;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Entity
@@ -17,12 +18,16 @@ public class ProductsDataSource {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @NotNull
     private String brand;
 
+    @NotNull
     private String model;
 
+    @NotNull
     private String yearModel;
 
+    @NotNull
     private String color;
 
     private Integer fipe;
