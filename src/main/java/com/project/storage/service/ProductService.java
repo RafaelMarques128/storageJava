@@ -1,11 +1,16 @@
 package com.project.storage.service;
 
 import com.project.storage.datasource.products.ProductsRepository;
+import com.project.storage.datasource.products.records.ProductsDataList;
 import com.project.storage.datasource.products.records.ProductsRegister;
 import com.project.storage.datasource.products.model.ProductsDataSource;
 import com.project.storage.exception.ValidacaoException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,9 +37,9 @@ import java.util.List;
         }
     }
 
-    public List<ProductsDataSource> listarProdutos() {
-        List<ProductsDataSource> response = productsRepository.findAll();
-        return response;
+    public ResponseEntity<List<ProductsDataSource>> listarProdutos(@PageableDefault(size = 10, sort ={"nome"}) Pageable pageable) {
+        var page = productsRepository.findAllBy(pageable).map(ProductsDataList::new);
+        return ;
     }
 
     public ProductsDataSource buscarPorId(Integer id) {
